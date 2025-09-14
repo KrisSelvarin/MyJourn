@@ -8,7 +8,7 @@ def main():
     message = User.entry_message('Entry Message: ')
     year, date, time = User.time()
 
-    filename = Filename.test_file(year)
+    filename = Filename.filename(year)
     my = Journal(year, filename=filename)
 
     my.add_entry(date, title, message, time)
