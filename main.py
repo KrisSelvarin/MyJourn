@@ -1,7 +1,7 @@
 # main.py
-from module.journal import Journal
-from module.user import User
-from module.filename import Filename
+from myjourn.journal import Journal
+from myjourn.user import User
+from myjourn.filename import Filename
 
 def main():
     title = User.entry_title('Entry Title: ')

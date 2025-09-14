@@ -9,9 +9,12 @@ venv/
 .venv/
 env/
 .env/
-
 *.env
 .env.*
 
 # Jupyter Notebook
 .ipynb_checkpoints
+
+# tests
+/tests/*
+!/tests/.gitkeep
