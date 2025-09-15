@@ -6,6 +6,13 @@
       "title": "Start",
       "message": "Started PyJourn",
       "time": "1135H"
+    },
+    {
+      "id": 2,
+      "date": "Sep-14",
+      "title": "Directory Fix",
+      "message": "Saving to C:\\Uers\\Asus\\Desktop\\Python Things\\CODES\\POJECTS\\data\\test_data",
+      "time": "1757H"
     }
   ]
 }

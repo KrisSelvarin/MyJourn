@@ -37,8 +37,12 @@ class Journal:
         with open(self.filename, 'w') as file:
             json.dump(data, file, indent=2)
 
-    def rm_entry():
+    def rm_entry(self):
         """Remove user entry"""
+        # Load existing file
+        with open(self.filename, 'r') as file:
+            data = json.load(file)
+
         pass
 
     def display_entry():
