@@ -43,8 +43,30 @@ class Journal:
         with open(self.filename, 'r') as file:
             data = json.load(file)
 
-        pass
 
-    def display_entry():
-        """Displays all entries"""
-        pass
+    @staticmethod
+    def display_entry(year, filename, date):
+        """Search entries"""
+        # Load file
+        with open(filename, 'r') as file:
+            data = json.load(file)
+
+        # initial state
+        prev_entry = None
+        i_entry = 0
+
+        for entry in data[year]:
+            
+            # display details
+            if entry.get('date') == date:
+
+                # separator
+                i_entry += 1
+                if i_entry != prev_entry and prev_entry != None:
+                    print("-------------------------")
+
+                print(f'ID: {entry.get('id')}')
+                print(f'Title: {entry.get('title')}')
+                print(f'Message: {entry.get('message')}')
+
+                prev_entry = i_entry
