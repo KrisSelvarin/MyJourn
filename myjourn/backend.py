@@ -23,10 +23,19 @@ class Backend:
 
         self.journal.add_entry(date, title, message, time)
 
-    def rm_entry(self):
+    @classmethod
+    def rm_entry(cls):
         """Handles removing entry"""
-        # TODO: implement remove logic using IDs
-        pass
+
+        # gets filename, year and if theres an entry
+        filename, year, n_entry = cls.search_entry()
+
+        # if theres an available entry to be removed
+        if n_entry:
+            rm_id = int(input('Entry ID to remove: '))
+            journal = Journal(year, filename=filename)
+            journal.rm_entry(rm_id)
+        
 
     @staticmethod
     def search_entry():
@@ -35,37 +44,30 @@ class Backend:
         # User input
         date = input('Date (MM-DD-YYYY): ')
         pattern = r'(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])-(\d{4})'
-        reg = re.match(pattern, date)
 
         # default values
         new_date = None
         year = None
 
-        if reg:
-            try:
-                # validate date
-                datetime.strptime(date, '%m-%d-%Y')
-
-                # capture month/day/year in regex
-                month = reg.group(1)
-                day = reg.group(2)
-                year = reg.group(3)
-
-                # create datetime object
-                d = f'{month}-{day}-{year}'
-                date_obj = datetime.strptime(d, '%m-%d-%Y')
-
-                # format datetime object
-                new_date = date_obj.strftime('%b-%d')
-
-            except ValueError:
-                print('Invalid Date!')
-        else:
+        if not re.match(pattern, date):
             print('Wrong Format!')
+            return None
+
+        try:
+            # validate date
+            date_obj = datetime.strptime(date, '%m-%d-%Y')
+
+        except ValueError:
+                print('Invalid Date!')
+                return None
         
-        if year and new_date:
-            filename = Filename.filename(year)
-            Journal.display_entry(year, filename, new_date)
+        # format datetimeobj
+        year = date_obj.strftime('%Y')
+        new_date = date_obj.strftime('%b-%d')
+        filename = Filename.filename(year)
+        
+        n_entry = Journal.display_entry(year, filename, new_date)
+        return filename, year, n_entry
 
     @staticmethod
     def close_program():

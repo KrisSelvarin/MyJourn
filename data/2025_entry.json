@@ -2,10 +2,66 @@
   "2025": [
     {
       "id": 1,
+      "date": "Sep-13",
+      "title": "Start",
+      "message": "Started PyJourn",
+      "time": "1135H"
+    },
+    {
+      "id": 2,
       "date": "Sep-14",
-      "title": "Github",
-      "message": "Pushed to GitHub",
-      "time": "1314H"
+      "title": "Directory Fix",
+      "message": "Trying to save to the right directory",
+      "time": "1757H"
+    },
+    {
+      "id": 3,
+      "date": "Sep-15  ",
+      "title": "Search function",
+      "message": "Added preliminary search function",
+      "time": "1054H"
+    },
+    {
+      "id": 4,
+      "date": "Sep-15",
+      "title": "Add entry",
+      "message": "I dont have much data to test hehehe",
+      "time": "1831H"
+    },
+    {
+      "id": 5,
+      "date": "Sep-15",
+      "title": "Add entry",
+      "message": "Here's another pewpewpew",
+      "time": "1832H"
+    },
+    {
+      "id": 6,
+      "date": "Sep-15",
+      "title": "Regex",
+      "message": "I'm wondering if I'll just use regex for user input then transform it into a format I want to store",
+      "time": "1938H"
+    },
+    {
+      "id": 7,
+      "date": "Sep-16",
+      "title": "Done prelim basic functions",
+      "message": "Already added add, remove and search functions",
+      "time": "1257H"
+    },
+    {
+      "id": 8,
+      "date": "Sep-16",
+      "title": "Configure",
+      "message": "Make some of the functions more compressed(?) or shorter(?)",
+      "time": "1549H"
+    },
+    {
+      "id": 9,
+      "date": "Sep-16",
+      "title": "Early return",
+      "message": "I learned using early returns to break the execution of somethin from chatGPT",
+      "time": "1610H"
     }
   ]
 }
