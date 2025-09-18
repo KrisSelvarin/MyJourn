@@ -62,8 +62,12 @@ class Journal:
     def display_entry(year, filename, date):
         """Search entries"""
         # Load file
-        with open(filename, 'r') as file:
-            data = json.load(file)
+        try:
+            with open(filename, 'r') as file:
+                data = json.load(file)
+        except FileNotFoundError:
+            print(f'No file exists for year {year}.')
+            return
 
         # initial state
         found = False
