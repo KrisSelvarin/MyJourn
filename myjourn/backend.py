@@ -23,12 +23,12 @@ class Backend:
 
         self.journal.add_entry(date, title, message, time)
 
-    @classmethod
-    def rm_entry(cls):
+    @staticmethod
+    def rm_entry():
         """Handles removing entry"""
 
         # gets filename, year and if theres an entry
-        filename, year, n_entry = cls.search_entry()
+        filename, year, n_entry = Backend.search_entry()
 
         # if theres an available entry to be removed
         if n_entry:
@@ -36,7 +36,6 @@ class Backend:
             journal = Journal(year, filename=filename)
             journal.rm_entry(rm_id)
         
-
     @staticmethod
     def search_entry():
         """Handles entry search"""
@@ -68,8 +67,46 @@ class Backend:
         
         n_entry = Journal.display_entry(year, filename, new_date)
         return filename, year, n_entry
-
+    
     @staticmethod
     def close_program():
-        """Just closes program"""
-        exit()
+        """Just closes the program"""
+        exit('=== Program Exit ===')
+    
+    @staticmethod
+    def menu():
+        """CLI Menu"""
+        print('=== Main Menu ===')
+        menu_list = ['Add Entry', 'Remove Entry', 'Search', 'Exit']
+
+        for i, option in enumerate(menu_list, start=1):
+            print(f'[{i}] {option}')
+
+        while True:
+            try:
+                select = int(input('Selection: ').strip())
+                if 1 <= select <= len(menu_list):
+                    return select
+                else:
+                    print(f'Enter number between 1-{len(menu_list)}.')
+            except ValueError:
+                print('Enter valid number.')
+
+    def run(self):
+        """Main Loop"""
+        
+        # Actions dictionary
+        actions = {
+            1: self.add_entry,
+            2: self.rm_entry,
+            3: self.search_entry,
+            4: self.close_program,
+
+        }
+
+        while True:
+            select = self.menu()
+            action = actions.get(select)
+            if action:
+                action()
+        
