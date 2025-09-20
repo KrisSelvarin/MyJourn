@@ -2,6 +2,7 @@
 # calls logic classes
 from myjourn.journal import Journal
 from myjourn.filename import Filename
+from myjourn.home import Home
 from datetime import datetime
 import re
 
@@ -19,7 +20,7 @@ class Backend:
 
         # Time stamps
         date = datetime.now().strftime('%b-%d')         # format to Sep-14
-        time = datetime.now().strftime('%H%MH')         # 24H format (e.g. 1830H)
+        time = datetime.now().strftime('%H%M') + 'H'    # 24H format (e.g. 1830H)
 
         self.journal.add_entry(date, title, message, time)
 
@@ -71,7 +72,8 @@ class Backend:
     @staticmethod
     def close_program():
         """Just closes the program"""
-        exit('=== Program Exit ===')
+        Home.goodbye()
+        exit()
     
     @staticmethod
     def menu():
@@ -109,4 +111,3 @@ class Backend:
             action = actions.get(select)
             if action:
                 action()
-        
